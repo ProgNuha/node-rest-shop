@@ -13,6 +13,7 @@ mongoose.connect(
         '@node-rest-shop-3vfqs.mongodb.net/test?retryWrites=true&w=majority',
     { useNewUrlParser: true }
 );
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
