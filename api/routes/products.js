@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Product = require('../models/product');
+// const multer = require('multer');
 
 router.get('/',(req,res,next) => {
     Product.find()
@@ -56,7 +57,12 @@ router.post('/',(req,res,next) => {
                 }
             });
         })
-        .catch(err => console.log(err));
+        .catch(err =>{
+            console.log(err)
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 router.get('/:productId',(req,res,next) => {
